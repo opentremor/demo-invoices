@@ -1,5 +1,7 @@
 # 1. Every query filters on the tenant
 
+Status: Accepted
+
 ## Context
 
 Every customer's data sits in the same MongoDB collections. The gateway authenticates the
