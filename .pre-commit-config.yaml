@@ -1,0 +1,21 @@
+# OpenTremor checks this repository's changes against the organization's rules: a quick check
+# before each commit, a full one before each push. Needs the `opentremor` CLI, signed in with
+# `opentremor login` or OPENTREMOR_TOKEN.
+# Install: pre-commit install --hook-type pre-commit --hook-type pre-push
+repos:
+  - repo: local
+    hooks:
+      - id: opentremor-quick
+        name: OpenTremor quick check
+        entry: opentremor check --staged --mode quick
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+      - id: opentremor-full
+        name: OpenTremor full check
+        entry: opentremor check --base auto --mode full
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
